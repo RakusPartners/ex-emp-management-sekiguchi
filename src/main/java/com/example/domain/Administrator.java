@@ -1,5 +1,7 @@
 package com.example.domain;
 
+//管理者情報を表すドメイン
+//@Auther sekiguchi
 public class Administrator {
 
     //ID
@@ -11,7 +13,7 @@ public class Administrator {
     //パスワード
     private String password;
 
-    Administrator(){
+    public Administrator(){
 
     }
 

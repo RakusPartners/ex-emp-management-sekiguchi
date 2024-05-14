@@ -14,10 +14,15 @@ public class AdministratorService {
 
     @Autowired
     private AdministratorRepository repository;
-    
+
     //管理者情報を挿⼊する
     public void insert(Administrator administrator){
         repository.insert(administrator);
+    }
+    //ログイン処理をする
+    public Administrator login(String mailAddress,String password){
+       Administrator administrator= repository.findByMailAddressAndPassword(mailAddress, password);
+        return administrator;
     }
 
 }

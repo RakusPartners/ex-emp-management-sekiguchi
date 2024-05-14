@@ -29,13 +29,14 @@ public class AdministratorRepository {
     //管理者情報を挿入する
     public void insert(Administrator administrator){
         SqlParameterSource param = new BeanPropertySqlParameterSource(administrator);
-			String insertSql = "INSERT INTO administrators (name,mail_address,password)SET(:name,:mail_address,:password)";
+        //BeanProportiesを使用する時は、？にあたる部分がdomainと一致していなければいけないj
+			String insertSql = "INSERT INTO administrators (name,mail_address,password)VALUES(:name,:mailAddress,:password)";
             template.update(insertSql, param);
     }
 
     //メールアドレスとパスワードから管理者情報を取得する（１件も存在しない場合はnullを返す＊）
     public Administrator findByMailAddressAndPassword(String mailAddress,String password){
-        String findBySql = "SELECT id,name,mail_address,password FROM administrators WHERE mail_address=:mail_address, password=:password";
+        String findBySql = "SELECT id,name,mail_address,password FROM administrators WHERE mail_address=:mail_address AND password=:password";
        
         SqlParameterSource param = new MapSqlParameterSource().addValue("mail_address",mailAddress).addValue("password", password);
 

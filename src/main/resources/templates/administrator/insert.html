@@ -41,7 +41,8 @@
             <!-- ここから上を編集する必要はありません -->
 
             <!-- ここにモックのform要素を貼り付けます -->
-            <form  action="login.html" th:action="@{/insert}" th:object="${insertAdministratorForm}" method="post">
+           
+            <form method="post" action="login.html" th:action="@{/insert}" th:object="${insertAdministratorForm}">
               <fieldset>
                 <legend>
                   管理者登録<br />(システムにログインできる管理者を登録します)
@@ -53,7 +54,6 @@
                       <label for="name"> 氏名: </label>
                       <label class="error-messages">
                         氏名を入力してください
-                        <input id="name" type="text" name="${name}" th:field="*{name}">
                       </label>
                       <input
                         type="text"
@@ -61,6 +61,7 @@
                         id="name"
                         class="form-control"
                         placeholder="山田太郎"
+                        th:field="*{name}"
                       />
                     </div>
                   </div>
@@ -72,7 +73,6 @@
                       <label for="mailAddress"> メールアドレス: </label>
                       <label class="error-messages">
                         メールアドレスを入力してください
-                        <input id="mailAddress" type="text" name="${mailAddress}" th:field="*{mailAddress}">
                       </label>
                       <input
                         type="text"
@@ -80,6 +80,7 @@
                         id="mailAddress"
                         class="form-control"
                         placeholder="yamada@mail.com"
+                        th:field="*{mailAddress}"
                       />
                     </div>
                   </div>
@@ -91,7 +92,6 @@
                       <label for="passwaord"> パスワード: </label>
                       <label class="error-messages">
                         パスワードを入力してください
-                        <input id="passwaord" type="password" name="${password}">
                       </label>
                       <input
                         type="password"
@@ -99,6 +99,7 @@
                         id="password"
                         class="form-control"
                         placeholder="password"
+                        th:field="*{password}"
                       />
                     </div>
                   </div>
@@ -115,7 +116,6 @@
                 </div>
               </fieldset>
             </form>
-
 
             <!-- ここから下を編集する必要はありません -->
           </div>

@@ -1,6 +1,5 @@
 package com.example.repository;
 
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
@@ -30,7 +29,7 @@ public class EmployeeRepository {
         employee.setTelephone(rs.getString("telephone"));
         employee.setSalary(rs.getInt("salary"));
         employee.setCharacteristics(rs.getString("characteristics"));
-        employee.setDependentsCount(rs.getInt("dependens_conut"));
+        employee.setDependentsCount(rs.getInt("dependents_count"));
         return employee;
     };
 
@@ -61,7 +60,7 @@ public class EmployeeRepository {
     //従業員情報を変更（idカラムを除いた従業員情報のすべてのカラムを更新できるようなSQL発行）。全行更新されないようにWHERE句の指定を考える
     public void update(Employee employee){
         SqlParameterSource param = new BeanPropertySqlParameterSource(employee);
-        String UpSql="UPDATE employees SET name=:name,image=:image,gender=:gender,hire_date=:hire_date,mail_address=:mail_address,zip_code=:zip_code,address=:address,telephone=:telephone,salary=:salary,characteristics=:characteristics,dependents_count=:dependents_count WHERE id=:id";
+        String UpSql="UPDATE employees SET name=:name,image=:image,gender=:gender,hire_date=:hireDate,mail_address=:mailAddress,zip_code=:zipCode,address=:address,telephone=:telephone,salary=:salary,characteristics=:characteristics,dependents_count=:dependentsCount WHERE id=:id";
         template.update(UpSql, param);
     }
 

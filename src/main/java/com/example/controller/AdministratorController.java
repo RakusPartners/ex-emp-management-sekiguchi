@@ -69,11 +69,20 @@ public class AdministratorController {
             model.addAttribute("error", "メールアドレスまたはパスワードが不正です。");
             return "administrator/login";
         }else{
-            session.setAttribute("administratorName",administrator);
+            session.setAttribute("administratorName",administrator.getName());
             return "redirect:/employee/showList";
         }
 
        
 
+    }
+
+    //ログアウトをする
+    @GetMapping("/logout")
+    public String logout(LoginForm form){
+        //session 情報をクリア
+        session.invalidate();
+
+        return "redirect:/";
     }
 }

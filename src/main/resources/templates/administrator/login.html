@@ -44,15 +44,15 @@
             <form method="post" action="../employee/list.html" th:action="@{/login}" th:object="${loginForm}">
               <fieldset>
                 <legend>ログイン</legend>
-                <!-- <div class="form-group">
-                  <div class="alert alert-danger">
-                    <p>メールアドレスまたはパスワードが間違っています</p>
+                <div class="form-group">
+                  <div class="alert alert-danger" th:unless="${error == null}">
+                    <!-- <p th:text="${error}">メールアドレスまたはパスワードが間違っています</p> -->
                   </div>
-                </div> -->
+                </div>
                 <div class="form-group">
                   <label for="mailAddress">メールアドレス:</label>
                   <!-- errorがリクエストスコープに入っていれば、エラーを出すようにする -->
-                  <span th:unless="${error == null}" th:text="${error}">エラー</span><br>
+                  <span th:unless="${error == null}" th:text="${error}" >エラー</span><br>
                   <input
                     type="text"
                     name="mailAddress"
